@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://cb87fsxxm14sd"]
+
+[ext_resource type="Texture2D" uid="uid://d3egl0axle88j" path="res://tree.png" id="1_35sj3"]
+[ext_resource type="Texture2D" uid="uid://by7t4bfdq4twu" path="res://кусты.png" id="2_86qag"]
+[ext_resource type="Texture2D" uid="uid://cysmrcmt8ycw2" path="res://dern.png" id="3_n4mbd"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="4_oa0mh"]
+[ext_resource type="Texture2D" uid="uid://ytmnln05fp1j" path="res://Player/нога.png" id="5_5am8g"]
+[ext_resource type="Texture2D" uid="uid://ca5gatj4imoc0" path="res://Player/рука.png" id="6_06255"]
+[ext_resource type="Texture2D" uid="uid://bqiidndn781tf" path="res://Player/туловище.png" id="7_6okuc"]
+[ext_resource type="Texture2D" uid="uid://b8yg2b1xt4rmi" path="res://Player/голова.png" id="8_mnvjg"]
+[ext_resource type="Texture2D" uid="uid://c0v15v82xt4j6" path="res://Player/лицо.png" id="9_gxrf8"]
+[ext_resource type="Texture2D" uid="uid://cpjtp2mcrvhcd" path="res://Player/Волосы.png" id="10_mncfo"]
+[ext_resource type="AudioStream" uid="uid://cekomvd0vabr3" path="res://Player/run.mp3" id="11_bs1ax"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ia7q6"]
+radius = 41.0
+height = 156.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -497.0
+offset_top = -525.0
+offset_right = 1632.0
+offset_bottom = 754.0
+color = Color(0, 1, 1, 1)
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(635, 443)
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("1_35sj3")
+
+[node name="Кусты" type="Sprite2D" parent="."]
+position = Vector2(658, 591)
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("2_86qag")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(717, 660)
+scale = Vector2(0.195, 0.195)
+
+[node name="Dern" type="Sprite2D" parent="CharacterBody2D2"]
+texture = ExtResource("3_n4mbd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D2"]
+polygon = PackedVector2Array(-584.615, -400, -2071.79, -410.256, -2548.72, -512.821, -3030.77, -594.872, -3507.69, -584.615, -3928.21, -482.051, -4302.56, -282.051, 2835.9, -148.718, 2733.33, -738.461, 2220.51, -676.923, 1810.26, -584.615, 1307.69, -492.308, 743.59, -410.256, 66.6667, -400)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(554, 0)
+script = ExtResource("4_oa0mh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(2, -23)
+shape = SubResource("CapsuleShape2D_ia7q6")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0, -133)
+position_smoothing_enabled = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="CharacterBody2D"]
+position = Vector2(-177, -116)
+scale = Vector2(0.6, 0.6)
+
+[node name="Нога2" type="Sprite2D" parent="CharacterBody2D/CharacterBody2D"]
+position = Vector2(273, 245)
+rotation = 0.174533
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_5am8g")
+
+[node name="Нога" type="Sprite2D" parent="CharacterBody2D/CharacterBody2D"]
+position = Vector2(319, 246)
+rotation = 3.14159
+scale = Vector2(0.1, -0.1)
+texture = ExtResource("5_5am8g")
+
+[node name="Рука2" type="Sprite2D" parent="CharacterBody2D/CharacterBody2D"]
+position = Vector2(340.568, 147)
+rotation = 3.14159
+scale = Vector2(0.115378, -0.1)
+texture = ExtResource("6_06255")
+
+[node name="Рука" type="Sprite2D" parent="CharacterBody2D/CharacterBody2D"]
+position = Vector2(256, 144)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_06255")
+
+[node name="Туловище" type="Sprite2D" parent="CharacterBody2D/CharacterBody2D"]
+position = Vector2(299, 179)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_6okuc")
+
+[node name="Голова" type="Sprite2D" parent="CharacterBody2D/CharacterBody2D"]
+position = Vector2(299, 83)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_mnvjg")
+
+[node name="Лицо" type="Sprite2D" parent="CharacterBody2D/CharacterBody2D"]
+position = Vector2(299, 83)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_gxrf8")
+
+[node name="Волосы" type="Sprite2D" parent="CharacterBody2D/CharacterBody2D"]
+position = Vector2(301, 34)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_mncfo")
+
+[node name="run" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("11_bs1ax")
